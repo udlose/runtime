@@ -73,28 +73,28 @@ extends:
       # Running all of these everywhere is wasteful. Run Banana.24 and CentOS.7 in rolling CI,
       # Run Linux-x64 in PR.
 
-      - template: /eng/pipelines/common/platform-matrix.yml
-        parameters:
-          jobTemplate: /eng/pipelines/common/global-build-job.yml
-          buildConfig: Release
-          helixQueueGroup: pr
-          platforms:
-          - SourceBuild_Centos7_x64
-          jobParameters:
-            nameSuffix: Centos7SourceBuild
-            extraStepsParameters:
-              name: SourceBuildPackages
-            timeoutInMinutes: 180
+    - template: /eng/pipelines/common/platform-matrix.yml
+      parameters:
+        jobTemplate: /eng/pipelines/common/global-build-job.yml
+        buildConfig: Debug
+        helixQueueGroup: pr
+        platforms:
+        - SourceBuild_Centos7_x64
+        jobParameters:
+          nameSuffix: Centos7SourceBuild
+          extraStepsParameters:
+            name: SourceBuildPackages
+          timeoutInMinutes: 180
 
-      - template: /eng/pipelines/common/platform-matrix.yml
-        parameters:
-          jobTemplate: /eng/pipelines/common/global-build-job.yml
-          buildConfig: Debug
-          helixQueueGroup: pr
-          platforms:
-          - SourceBuild_Banana24_x64
-          jobParameters:
-            nameSuffix: Banana24SourceBuild
-            extraStepsParameters:
-              name: SourceBuildPackages
-            timeoutInMinutes: 180
+    - template: /eng/pipelines/common/platform-matrix.yml
+      parameters:
+        jobTemplate: /eng/pipelines/common/global-build-job.yml
+        buildConfig: Release
+        helixQueueGroup: pr
+        platforms:
+        - SourceBuild_Banana24_x64
+        jobParameters:
+          nameSuffix: Banana24SourceBuild
+          extraStepsParameters:
+            name: SourceBuildPackages
+          timeoutInMinutes: 180
