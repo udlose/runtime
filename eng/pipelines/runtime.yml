@@ -69,7 +69,7 @@ extends:
     - template: /eng/pipelines/common/platform-matrix.yml
       parameters:
         jobTemplate: /eng/pipelines/common/global-build-job.yml
-        buildConfig: Release
+        buildConfig: Debug
         helixQueueGroup: pr
         platforms:
         - SourceBuild_Centos7_x64
@@ -82,7 +82,7 @@ extends:
     - template: /eng/pipelines/common/platform-matrix.yml
       parameters:
         jobTemplate: /eng/pipelines/common/global-build-job.yml
-        buildConfig: Debug
+        buildConfig: Release
         helixQueueGroup: pr
         platforms:
         - SourceBuild_Banana24_x64
