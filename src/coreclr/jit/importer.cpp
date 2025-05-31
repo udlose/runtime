@@ -3897,7 +3897,7 @@ GenTree* Compiler::impImportStaticReadOnlyField(CORINFO_FIELD_HANDLE field, CORI
 #ifdef TARGET_XARCH
                     if (simdType == TYP_SIMD64)
                     {
-                        hwAccelerated = compOpportunisticallyDependsOn(InstructionSet_AVX512F);
+                        hwAccelerated = compOpportunisticallyDependsOn(InstructionSet_AVX512);
                     }
                     else if (simdType == TYP_SIMD32)
                     {
@@ -4383,9 +4383,6 @@ void Compiler::impInsertHelperCall(CORINFO_HELPER_DESC* helperInfo)
             case CORINFO_HELPER_ARG_TYPE_Class:
                 info.compCompHnd->classMustBeLoadedBeforeCodeIsRun(helperArg.classHandle);
                 currentArg = gtNewIconEmbClsHndNode(helperArg.classHandle);
-                break;
-            case CORINFO_HELPER_ARG_TYPE_Module:
-                currentArg = gtNewIconEmbScpHndNode(helperArg.moduleHandle);
                 break;
             case CORINFO_HELPER_ARG_TYPE_Const:
                 currentArg = gtNewIconNode(helperArg.constant);
